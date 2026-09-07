@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRSEC Canteen - Food Pre-Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">🍽️ VRSEC Canteen</div>
+        <div class="nav-links">
+            <a href="#menu" class="nav-link">Menu</a>
+            <a href="#cart" class="nav-link">Cart (<span id="cart-count">0</span>)</a>
+            <a href="#" class="nav-link logout-btn" onclick="logout()">Logout</a>
+        </div>
+    </nav>
+
+    <div id="login-page" class="page active">
+        <div class="login-container">
+            <h1>VRSEC Canteen Food Booking</h1>
+            <form onsubmit="login(event)">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+                <p>Don't have account? <a href="#" onclick="toggleSignup()">Sign Up</a></p>
+            </form>
+        </div>
+        <div id="signup-form" class="signup-container hidden">
+            <h2>Create Account</h2>
+            <form onsubmit="signup(event)">
+                <input type="text" id="signup-username" placeholder="Username" required>
+                <input type="email" id="signup-email" placeholder="Email" required>
+                <input type="password" id="signup-password" placeholder="Password" required>
+                <input type="tel" id="signup-phone" placeholder="Phone Number" required>
+                <button type="submit">Sign Up</button>
+                <p><a href="#" onclick="toggleSignup()">Back to Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="menu-page" class="page">
+        <div class="container">
+            <h2>📋 Today's Menu</h2>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterMenu('all')">All</button>
+                <button class="filter-btn" onclick="filterMenu('fried-rice')">Fried Rice</button>
+                <button class="filter-btn" onclick="filterMenu('curd-rice')">Curd Rice</button>
+                <button class="filter-btn" onclick="filterMenu('drinks')">Drinks</button>
+                <button class="filter-btn" onclick="filterMenu('snacks')">Snacks</button>
+            </div>
+
+            <div class="menu-grid" id="menu-grid">
+                <!-- Menu items will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <div id="cart-page" class="page">
+        <div class="container">
+            <h2>🛒 Your Cart</h2>
+            <div id="cart-items">
+                <!-- Cart items will be displayed here -->
+            </div>
+            <div class="cart-summary">
+                <h3>Total: ₹<span id="total-price">0</span></h3>
+                <div class="booking-details">
+                    <input type="date" id="booking-date" placeholder="Select Date">
+                    <input type="time" id="booking-time" placeholder="Select Time">
+                </div>
+                <button onclick="checkout()" class="checkout-btn">Pre-Book Now</button>
+                <button onclick="backToMenu()" class="back-btn">Back to Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
